@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 interface PageHeaderProps {
     title: string;
+    description?: string; // this line define type to the second prop passed to this component, and the '?' signal on it means it is a optional prop
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
@@ -17,9 +18,13 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
                 </Link>
                 <img src={logoImg} alt="proffy"/>
             </div>
+
+            
             <div className="header-content">
                 <strong>{props.title}</strong>
-
+                {/* conditional if in JSX and return a <p> if conditional is true, and do nothing if not*/}
+                {props.description && <p>{ props.description}</p>} 
+            
                 {props.children}
             </div>
         </header>
